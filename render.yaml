@@ -1,0 +1,35 @@
+services:
+  # Backend API
+  - type: web
+    name: ai-journal-backend
+    env: node
+    plan: free
+    region: oregon 
+    buildCommand: npm install
+    startCommand: node server.js
+    rootDir: backend
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: LLM_API_KEY
+        sync: false
+      - key: LLM_MODEL
+        value: gemini-1.5-flash
+      - key: PORT
+        value: 5000
+
+  # Frontend SPA
+  - type: web
+    name: ai-journal-frontend
+    env: static
+    plan: free
+    region: oregon
+    buildCommand: npm install && npm run build
+    publishDir: dist
+    rootDir: frontend
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: ai-journal-backend
+          property: host

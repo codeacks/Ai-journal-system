@@ -1,0 +1,32 @@
+/* Clean slate - App specific styles */
+.App {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  main > div {
+    grid-template-columns: 1fr !important;
+  }
+  
+  aside {
+    position: static !important;
+  }
+}
+
+/* Custom scrollbar for better aesthetics */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
