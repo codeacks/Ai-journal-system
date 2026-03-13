@@ -1,59 +1,43 @@
-# AI-Assisted Journal System
+# 🧠 Mindful Collector - AI Journal System
 
-A production-quality prototype for a journaling platform used in ArvyaX immersive nature sessions.
+A premium, AI-assisted journaling platform designed for personal growth and emotional clarity.
 
-## 🚀 Setup Instructions
+## ✨ Features
+- **Modern UI**: Sleek glassmorphism design with Dark/Light mode support.
+- **AI Analysis**: Powered by **Google Gemini** for deep emotional insights.
+- **Cloud Database**: Integrated with **MongoDB Atlas**.
+- **Responsive**: Fully optimized for mobile and desktop.
 
-### Prerequisites
-- Node.js (v18+)
-- NPM
+---
 
-### Backend Setup
-1. Navigate to the `backend` folder:
-   ```bash
-   cd backend
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Create a `.env` file from the placeholder provided:
-   ```bash
-   # Add your LLM API Key
-   LLM_API_KEY=your_real_api_key
-   ```
-4. Start the server:
-   ```bash
-   npm start
-   ```
-   The backend will run on [http://localhost:5000](http://localhost:5000).
+## 🚀 Deployment Guide (Render)
 
-### Frontend Setup
-1. Navigate to the `frontend` folder:
-   ```bash
-   cd frontend
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the Vite dev server:
-   ```bash
-   npm run dev
-   ```
-   The frontend will be available at [http://localhost:5173](http://localhost:5173).
+### 1. Backend (Web Service)
+1. In Render, select **New Web Service**.
+2. Connect this GitHub Repository.
+3. Settings:
+   - **Root Directory**: `backend`
+   - **Build Command**: `npm install`
+   - **Start Command**: `node server.js`
+4. **Environment Variables**:
+   - `LLM_API_KEY`: Your Gemini API Key.
+   - `MONGO_URI`: Your MongoDB Connection String.
+   - `LLM_MODEL`: `gemini-1.5-flash`
 
-## 🛠 Tech Stack
-- **Frontend**: React (Vite)
-- **Backend**: Node.js, Express.js
-- **Database**: SQLite (via `sqlite3` and `sqlite` wrapper)
-- **AI**: LLM-powered emotion analysis (compatible with OpenAI/Groq/OpenRouter)
-- **Security**: Helmet, Rate Limiting (10 req/min for AI endpoints)
-- **Caching**: In-memory hash-based caching for LLM responses.
+### 2. Frontend (Static Site)
+1. In Render, select **New Static Site**.
+2. Connect this GitHub Repository.
+3. Settings:
+   - **Root Directory**: `frontend`
+   - **Build Command**: `npm install && npm run build`
+   - **Publish Directory**: `dist`
+4. **Environment Variables**:
+   - `VITE_API_URL`: The URL of your backend service (e.g., `https://ai-backend.onrender.com`).
 
-## 📌 API Endpoints
-- `POST /api/journal`: Create a new entry.
-- `GET /api/journal/:userId`: Get all entries for a user.
-- `POST /api/journal/analyze`: Perform LLM emotion analysis on text.
-- `GET /api/journal/insights/:userId`: Get aggregated emotional insights.
-# Ai-journal-system
+---
+
+## 🛠 Local Setup
+1. Clone the repo and run `npm install` in the root.
+2. Create `.env` files in both `frontend/` and `backend/`.
+3. Run `npm run dev` from the root directory.
+
